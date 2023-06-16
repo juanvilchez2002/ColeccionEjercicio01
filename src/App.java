@@ -1,5 +1,9 @@
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class App {
@@ -42,6 +46,36 @@ public class App {
             System.out.println(razas);
         }
         
+//        Continuando el ejercicio anterior, después de mostrar los perros, al usuario se le pedirá
+//        un perro y se recorrerá la lista con un Iterator, se buscará el perro en la lista. Si el perro
+//        está en la lista, se eliminará el perro que ingresó el usuario y se mostrará la lista
+//        ordenada. Si el perro no se encuentra en la lista, se le informará al usuario y se mostrará
+//        la lista ordenada.
+
+        System.out.println("");
+        System.out.print("Ingrese una raza a eliminar: ");
+        String razaEliminar = consola.nextLine();
+        boolean flag = true;
+        //creando un Iterador
+        Iterator itPerro = perros.iterator();
+        //buscamos la raza a eliminar.
+        while(itPerro.hasNext()){
+            if(itPerro.next().equals(razaEliminar)){
+                itPerro.remove();
+                System.out.println("Raza elimada");
+                flag=false;
+            }
+        }
+        
+        if(flag) System.out.println("La raza no se encuentra en la lista");
+        System.out.println("");
+        
+        //ordenando la lista
+        Collections.sort(perros);
+        
+        for(String raza: perros){
+            System.out.println(raza);
+        }
     }
     
 }
